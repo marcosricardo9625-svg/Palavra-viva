@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173d32">
+<meta name="description" content="Palavra Viva — Bíblia, reflexão, oração e estudo bíblico.">
+<title>Palavra Viva</title>
+<style>
+:root{--green:#173d32;--green2:#245844;--gold:#d8b76a;--cream:#f7f5ee;--paper:#fffdf8;--ink:#23332d;--muted:#6c7972;--line:#e4e7df;--soft:#e8efe8}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+.top{background:linear-gradient(135deg,var(--green),#275b45);color:white;padding:22px 18px 26px;border-radius:0 0 25px 25px}
+.topinner,.wrap{max-width:820px;margin:auto}.brand{display:flex;align-items:center;gap:12px}.logo{display:grid;place-items:center;background:var(--gold);color:var(--green);width:44px;height:44px;border-radius:14px;font-size:24px}.brand h1{font-size:1.3rem;margin:0}.brand p{margin:0;color:#dce8df;font-size:.85rem}.eyebrow{font-size:.75rem;letter-spacing:.13em;color:#e8d9b1;font-weight:700;margin-top:25px}.top h2{font-size:clamp(1.45rem,4vw,2.05rem);line-height:1.2;margin:9px 0}.top .ref{color:#dce8df;font-size:.9rem}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:700;background:var(--green2);color:white}.btn.gold{background:var(--gold);color:#203b2e}.btn.outline{background:transparent;border:1px solid #cdd9cf;color:inherit}.btn.light{background:var(--soft);color:var(--green)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.wrap{padding:18px 14px 40px}.nav{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px}.nav button{border:1px solid var(--line);background:var(--paper);padding:12px 6px;border-radius:13px;color:var(--green);font-weight:700}.nav button.active{background:var(--soft);border-color:#b8cbb9}.nav span{display:block;font-size:1.25rem;margin-bottom:3px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:13px;box-shadow:0 3px 12px #183d3207}.card h2,.card h3{margin:0 0 9px}.muted{color:var(--muted);font-size:.9rem}.verse{font-size:1.12rem;line-height:1.8}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.field{width:100%;padding:12px;border:1px solid #cfd8d0;border-radius:11px;background:white;color:var(--ink);margin:5px 0 12px}.label{font-size:.9rem;font-weight:700;display:block}.section{display:none}.section.active{display:block}.verseitem{padding:12px 0;border-bottom:1px solid var(--line)}.verseitem:last-child{border-bottom:0}.pill{display:inline-block;border-radius:99px;padding:4px 9px;background:var(--soft);color:var(--green);font-size:.78rem;font-weight:700}.chatlog{display:flex;flex-direction:column;gap:10px;margin:14px 0;max-height:340px;overflow:auto}.bubble{padding:11px 13px;border-radius:14px;max-width:92%;white-space:pre-wrap}.bubble.bot{background:#edf1e9;align-self:flex-start}.bubble.user{background:#d8e8dc;align-self:flex-end}.small{font-size:.78rem}.footer{text-align:center;color:var(--muted);font-size:.78rem;padding:12px}.progress{height:8px;border-radius:20px;background:#e5e9e1;overflow:hidden}.progress div{height:100%;background:var(--green2);width:0%}
+@media(min-width:650px){.nav{grid-template-columns:repeat(6,1fr)}.top{padding:28px 24px 32px}.wrap{padding:22px 18px 50px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="topinner">
+  <div class="brand"><div class="logo">✝</div><div><h1>Palavra Viva</h1><p>Fé • Conhecimento • Esperança</p></div></div>
+  <div class="eyebrow">UM MOMENTO COM A PALAVRA</div>
+  <h2 id="dailyVerse">“O Senhor é o meu pastor; nada me faltará.”</h2>
+  <div class="ref" id="dailyRef">Salmos 23:1 · passagem de demonstração</div>
+  <div class="actions"><button class="btn gold" onclick="showTab('biblia')">📖 Ler a Bíblia</button><button class="btn outline" onclick="showTab('chat')">💬 Perguntar</button></div>
+</div></header>
+<main class="wrap">
+  <nav class="nav" aria-label="Navegação principal">
+    <button class="active" data-tab="inicio" onclick="showTab('inicio')"><span>⌂</span>Início</button>
+    <button data-tab="biblia" onclick="showTab('biblia')"><span>📖</span>Bíblia</button>
+    <button data-tab="chat" onclick="showTab('chat')"><span>💬</span>Chat bíblico</button>
+    <button data-tab="oracao" onclick="showTab('oracao')"><span>🙏</span>Oração</button>
+    <button data-tab="planos" onclick="showTab('planos')"><span>🗓️</span>Planos</button>
+    <button data-tab="salvos" onclick="showTab('salvos')"><span>♡</span>Meus salvos</button>
+  </nav>
+
+  <section class="section active" id="inicio">
+    <div class="card"><span class="pill">VERSÍCULO DO DIA</span><h2 style="margin-top:10px">Uma pausa para renovar a esperança</h2><p class="verse">“Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.”</p><p class="muted">Salmos 37:5 · trecho de demonstração</p><button class="btn light" onclick="saveItem('Salmos 37:5','Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.')">♡ Salvar passagem</button></div>
+    <div class="card"><h3>Continue sua caminhada</h3><p class="muted">Leia um trecho, registre o que aprendeu ou faça uma oração.</p><div class="row"><button class="btn" onclick="showTab('biblia')">Abrir leitura</button><button class="btn light" onclick="showTab('notas')">Minhas anotações</button></div></div>
+    <div class="card"><h3>Comece por aqui</h3><div class="row"><button class="btn outline" onclick="showTab('planos')">Plano de 7 dias</button><button class="btn outline" onclick="showTab('oracao')">Momento de oração</button></div></div>
+  </section>
+
+  <section class="section" id="biblia">
+    <div class="card"><h2>📖 Bíblia Sagrada completa</h2>
+      <p>Já podemos acessar a Bíblia Livre completa, com os livros do Gênesis ao Apocalipse, por meio da publicação oficial.</p>
+      <p class="muted">A leitura abaixo depende de conexão com a internet. Se não carregar dentro do aplicativo, use o botão para abrir a Bíblia no site oficial.</p>
+      <div class="actions" style="margin-top:12px">
+        <a class="btn" style="text-decoration:none;display:inline-block" href="https://ebible.org/porbr2018/" target="_blank" rel="noopener">Abrir Bíblia completa ↗</a>
+        <a class="btn light" style="text-decoration:none;display:inline-block" href="https://ebible.org/find/details.php?id=porbr2018" target="_blank" rel="noopener">Fonte e licença</a>
+      </div>
+      <div style="margin-top:16px;border:1px solid var(--line);border-radius:12px;overflow:hidden">
+        <iframe title="Bíblia Livre completa — site oficial" src="https://ebible.org/porbr2018/" loading="lazy" style="display:block;width:100%;height:65vh;min-height:440px;border:0;background:white" referrerpolicy="no-referrer"></iframe>
+      </div>
+      <p class="small muted" style="margin-top:12px">Crédito: Bíblia Livre (BLIVRE), Copyright © Diego Santos, Mario Sérgio e Marco Teles, fevereiro de 2018. Licença Creative Commons Atribuição 4.0 Brasil (CC BY 4.0). O texto integral é servido pelo site oficial, não está incorporado aos arquivos locais nesta versão.</p>
+      <details style="margin-top:14px"><summary style="cursor:pointer;font-weight:700">Passagens rápidas de demonstração</summary>
+        <label class="label" for="searchVerse" style="margin-top:12px">Buscar nas passagens disponíveis</label><input class="field" id="searchVerse" placeholder="Ex.: fé, pastor, confiança" oninput="renderVerses()">
+        <div id="verseList"></div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" id="chat">
+    <div class="card"><h2>💬 Chat bíblico</h2><p class="muted">Modo de demonstração: as respostas abaixo são exemplos fixos, não uma inteligência artificial conectada.</p>
+      <div class="chatlog" id="chatlog"><div class="bubble bot">Olá! Que tema bíblico você gostaria de compreender? Experimente perguntar sobre fé, oração ou esperança.</div></div>
+      <form id="chatForm"><label class="label" for="chatInput">Sua pergunta</label><input class="field" id="chatInput" maxlength="500" placeholder="Ex.: O que significa ter fé?" required><button class="btn" type="submit">Enviar pergunta ➤</button></form>
+      <p class="small muted">A integração futura será feita no servidor. Nunca coloque chaves secretas de IA neste arquivo público.</p>
+    </div>
+  </section>
+
+  <section class="section" id="oracao">
+    <div class="card"><h2>🙏 Momento de oração</h2><span class="pill">PAZ E SABEDORIA</span><p class="verse">Senhor, concede-me serenidade para enfrentar este dia, sabedoria para tomar boas decisões e força para seguir em frente. Ajuda-me a tratar as pessoas com amor e a encontrar esperança nos momentos difíceis. Amém.</p><button class="btn light" onclick="showTab('notas');document.getElementById('noteText').value='Minha oração de hoje: '">Registrar minha oração</button></div>
+    <div class="card"><h3>Reflexão pessoal</h3><p>Que atitude você pode tomar hoje para agir com mais paciência, bondade e confiança?</p><button class="btn outline" onclick="showTab('notas')">Escrever reflexão</button></div>
+  </section>
+
+  <section class="section" id="planos">
+    <div class="card"><h2>🗓️ Plano de leitura</h2><h3>7 dias de fé</h3><p class="muted">Marque as leituras concluídas. O progresso fica salvo neste navegador.</p><div class="progress"><div id="progressBar"></div></div><p id="progressText" class="muted">0 de 7 dias concluídos</p><div id="planList"></div></div>
+  </section>
+
+  <section class="section" id="salvos">
+    <div class="card"><h2>♡ Favoritos</h2><div id="savedList"></div></div>
+    <div class="card" id="notesSection"><h2>📝 Minhas anotações</h2><label class="label" for="noteTitle">Título (opcional)</label><input class="field" id="noteTitle" placeholder="Ex.: Reflexão sobre esperança"><label class="label" for="noteText">Sua anotação</label><textarea class="field" id="noteText" rows="4" placeholder="Escreva o que você aprendeu ou deseja lembrar..."></textarea><button class="btn" onclick="addNote()">Salvar anotação</button><div id="notesList" style="margin-top:14px"></div><p class="small muted">Favoritos, anotações e progresso ficam apenas neste navegador. Limpar os dados do navegador pode apagá-los. Ainda não há sincronização entre dispositivos.</p></div>
+  </section>
+  <section class="section" id="notas"><div class="card"><h2>📝 Minhas anotações</h2><p class="muted">Suas notas ficam no aparelho e navegador que você está usando.</p><label class="label" for="noteTitle2">Título</label><input class="field" id="noteTitle2" placeholder="Título da anotação"><label class="label" for="noteText2">Anotação</label><textarea class="field" id="noteText2" rows="5" placeholder="Escreva aqui..."></textarea><button class="btn" onclick="addNoteFromAlt()">Salvar anotação</button><div id="notesList2" style="margin-top:14px"></div></div></section>
+  <div class="footer">PALAVRA VIVA · Primeira versão de demonstração<br>Conteúdo bíblico integral e IA real serão adicionados em etapas futuras.</div>
+</main>
+<script>
+const passages=[
+ {ref:"Salmos 23:1",text:"O Senhor é o meu pastor; nada me faltará."},
+ {ref:"Salmos 37:5",text:"Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará."},
+ {ref:"João 3:16",text:"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna."},
+ {ref:"Hebreus 11:1",text:"A fé está ligada à confiança e à esperança naquilo que ainda não vemos."},
+ {ref:"Filipenses 4:6-7",text:"Não vivam dominados pela ansiedade; apresentem seus pedidos a Deus em oração e súplicas, com gratidão."},
+ {ref:"Provérbios 3:5",text:"Confia no Senhor de todo o teu coração e não te estribes no teu próprio entendimento."},
+ {ref:"Salmos 46:1",text:"Deus é o nosso refúgio e fortaleza, socorro bem presente na angústia."}
+];
+const plan=[["Salmos 23","Confiança"],["Provérbios 3","Sabedoria"],["Mateus 6","Oração"],["João 14","Consolo"],["Romanos 8","Esperança"],["Salmos 91","Proteção"],["Filipenses 4","Paz"]];
+const get=(k,d)=>{try{return JSON.parse(localStorage.getItem("pv_"+k))??d}catch{return d}};
+const put=(k,v)=>localStorage.setItem("pv_"+k,JSON.stringify(v));
+function showTab(tab){document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===tab));document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));if(tab==="biblia")renderVerses();if(tab==="salvos"||tab==="notas")renderSaved();if(tab==="planos")renderPlan();window.scrollTo({top:0,behavior:"smooth"})}
+function saveItem(ref,text){let a=get("saved",[]);if(!a.some(x=>x.ref===ref)){a.push({ref,text});put("saved",a)}renderSaved();alert(a.some(x=>x.ref===ref)?"Passagem salva nos favoritos!":"Já estava salva.")}
+function removeSaved(ref){put("saved",get("saved",[]).filter(x=>x.ref!==ref));renderSaved()}
+function renderVerses(){let q=(document.getElementById("searchVerse")?.value||"").toLowerCase();let list=passages.filter(p=>(p.ref+" "+p.text).toLowerCase().includes(q));document.getElementById("verseList").innerHTML=list.map(p=>`<div class="verseitem"><strong>${p.ref}</strong><p>${p.text}</p><button class="btn light" onclick='saveItem(${JSON.stringify(p.ref)},${JSON.stringify(p.text)})'>♡ Salvar</button></div>`).join("")||'<p class="muted">Nenhuma passagem de demonstração encontrada.</p>'}
+function renderSaved(){let saved=get("saved",[]);document.getElementById("savedList").innerHTML=saved.length?saved.map(p=>`<div class="verseitem"><strong>${p.ref}</strong><p>${p.text}</p><button class="btn outline" onclick='removeSaved(${JSON.stringify(p.ref)})'>Remover</button></div>`).join(""):'<p class="muted">Você ainda não salvou passagens. Acesse a Bíblia para adicionar favoritas.</p>';let notes=get("notes",[]);let markup=notes.length?notes.map((n,i)=>`<div class="verseitem"><strong>${escapeHtml(n.title||"Anotação")}</strong><p>${escapeHtml(n.text)}</p><button class="btn outline" onclick="removeNote(${i})">Excluir</button></div>`).join(""):'<p class="muted">Nenhuma anotação salva ainda.</p>';document.getElementById("notesList").innerHTML=markup;document.getElementById("notesList2").innerHTML=markup}
+function addNote(){let title=document.getElementById("noteTitle").value.trim(),text=document.getElementById("noteText").value.trim();if(!text){alert("Escreva uma anotação antes de salvar.");return}let a=get("notes",[]);a.unshift({title,text,date:new Date().toLocaleDateString("pt-BR")});put("notes",a);document.getElementById("noteTitle").value="";document.getElementById("noteText").value="";renderSaved();alert("Anotação salva neste navegador.")}
+function addNoteFromAlt(){let title=document.getElementById("noteTitle2").value.trim(),text=document.getElementById("noteText2").value.trim();if(!text){alert("Escreva uma anotação antes de salvar.");return}let a=get("notes",[]);a.unshift({title,text,date:new Date().toLocaleDateString("pt-BR")});put("notes",a);document.getElementById("noteTitle2").value="";document.getElementById("noteText2").value="";renderSaved();alert("Anotação salva neste navegador.")}
+function removeNote(i){let a=get("notes",[]);a.splice(i,1);put("notes",a);renderSaved()}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderPlan(){let done=get("done",[]);document.getElementById("planList").innerHTML=plan.map((p,i)=>`<label class="verseitem" style="display:flex;gap:10px;align-items:center"><input type="checkbox" ${done.includes(i)?"checked":""} onchange="toggleDay(${i},this.checked)"><span><strong>Dia ${i+1} · ${p[0]}</strong><br><span class="muted">${p[1]}</span></span></label>`).join("");document.getElementById("progressBar").style.width=(done.length/plan.length*100)+"%";document.getElementById("progressText").textContent=`${done.length} de ${plan.length} dias concluídos`}
+function toggleDay(i,on){let d=get("done",[]);put("done",on?[...new Set([...d,i])]:d.filter(x=>x!==i));renderPlan()}
+document.getElementById("chatForm").addEventListener("submit",e=>{e.preventDefault();let input=document.getElementById("chatInput"),q=input.value.trim();if(!q)return;let log=document.getElementById("chatlog");let u=document.createElement("div");u.className="bubble user";u.textContent=q;log.appendChild(u);let answer="Obrigado pela pergunta. Este chat ainda está em modo demonstrativo e não consulta uma IA. Para estudar este tema, procure uma passagem relacionada na Bíblia e leia o contexto completo. Na próxima etapa, vamos conectar um serviço de IA com limites de uso e referências bíblicas.";let low=q.toLowerCase();if(low.includes("fé"))answer="A fé, no contexto bíblico, está ligada à confiança em Deus e à esperança. Uma referência para estudar é Hebreus 11:1. Leia também o restante do capítulo para compreender os exemplos apresentados. (Resposta demonstrativa, não gerada por IA.)";else if(low.includes("ora"))answer="A oração é apresentada na Bíblia como uma forma de falar com Deus, expressar gratidão, pedir ajuda e buscar sabedoria. Mateus 6 é um bom ponto de partida para estudar o tema. (Resposta demonstrativa.)";else if(low.includes("esper"))answer="Para refletir sobre esperança, você pode começar por Romanos 8 e Salmos 46. Leia as passagens no contexto e observe como cada uma fala sobre confiança em tempos difíceis. (Resposta demonstrativa.)";let b=document.createElement("div");b.className="bubble bot";b.textContent=answer;log.appendChild(b);input.value="";log.scrollTop=log.scrollHeight});
+renderVerses();renderSaved();renderPlan();
+</script>
+</body></html>
